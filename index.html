@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Page</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: pink;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .box {
+      text-align: center;
+      z-index: 2;
+    }
+
+    h1 {
+      color: white;
+      font-size: 45px;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    button {
+      padding: 12px 18px;
+      margin: 5px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: white;
+      color: hotpink;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: hotpink;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    #quote {
+      margin-top: 15px;
+      color: white;
+      font-size: 22px;
+      display: none;
+    }
+
+    /* ❤️ сердечки */
+    .heart {
+      position: absolute;
+      top: -10px;
+      color: #ff4d6d;
+      font-size: 18px;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh); opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+
+    /* 🌸 сирень */
+    .lilac {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      width: 220px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(-2deg); }
+      50% { transform: translateY(-12px) rotate(2deg); }
+      100% { transform: translateY(0px) rotate(-2deg); }
+    }
+
+    iframe {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🎵 НОВАЯ МУЗЫКА (Ed Sheeran - Perfect) -->
+  <iframe 
+    src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&loop=1&playlist=2Vv-BfVoq4g"
+    allow="autoplay">
+  </iframe>
+
+  <div class="box">
+    <h1>I love you Madina ❤️</h1>
+
+    <button onclick="showQuote()">Показать цитату</button>
+
+    <div id="quote">
+      "Любовь — это когда один человек становится для тебя целым миром."
+    </div>
+  </div>
+
+  <!-- 🌸 сирень -->
+  <img class="lilac" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Lilac_flowers.jpg/320px-Lilac_flowers.jpg">
+
+  <script>
+    function showQuote() {
+      document.getElementById("quote").style.display = "block";
+    }
+
+    /* ❤️ сердечки */
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (12 + Math.random() * 18) + "px";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 180);
+  </script>
+
+</body>
+</html>
